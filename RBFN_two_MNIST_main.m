@@ -1,4 +1,14 @@
-%% Homework 3 question 2
+%% RBFN implementation for two classes of MNIST
+
+% Implementation of Radial basis function network for the MNIST dataset
+% This is a basic implementation. We show a proof of concept and explore
+% the behavior at varying regularization schemes and varying settings of
+% the radial basis function.
+% 
+% The code is commented and generalized for post on github-pages
+% http://robromijnders.github.io/RBFN_two_MNIST/
+
+
 clear all
 close all
 clc
