@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Rbfn two mnist by RobRomijnders</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Rbfn two mnist</h1>
+        <p>Radial basis function network for two classes of the MNIST dataset</p>
+
+        <p class="view"><a href="https://github.com/RobRomijnders/RBFN_two_MNIST">View the Project on GitHub <small>RobRomijnders/RBFN_two_MNIST</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/RobRomijnders/RBFN_two_MNIST/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/RobRomijnders/RBFN_two_MNIST/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/RobRomijnders/RBFN_two_MNIST">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>
+<a id="a-radial-basis-function-network" class="anchor" href="#a-radial-basis-function-network" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>A Radial basis function network</h3>
+
+<p>In this blog-post, we will discuss radial basis function networks(RBFN). RBNF's seem to have lost the race for popularity as compared to Neural Network. Yet, they prove a powerful generalization capacity. RBFN's are similar to NN in the sense that they use multiple layers of perceptrons to define a function over the input space. Yet, in an RBFN, the first layer generalizes the input space. That is, the input layer makes use of the distances between fixed center points and input data. The consequent activation functions are radially symmetric. Hence the name, radial basis function networks.</p>
+
+<h3>
+<a id="basic-implementation" class="anchor" href="#basic-implementation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basic implementation</h3>
+
+<p>This code is a mere proof of concept We explore the world of RBFN with a basic implementation. The dataset are two selected classes from the MNIST dataset. We implement both exact interpolation and approximate interpolation:</p>
+
+<ul>
+<li>In exact interpolation, we have as much hidden neurons in the firsy layer as we have train samples. Moreover, we pick the center points of the hidden neurons to be exactly these train samples. Obviously, we are overfitting in many aspects. </li>
+<li>In approximate interpolation, we pick less hidden neurons. This is a hyperparameter. Still, the center points of the hidden neurons are picked to be train samples.</li>
+</ul>
+
+<h3>
+<a id="evaluation" class="anchor" href="#evaluation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Evaluation</h3>
+
+<p>RBFN's have no deterministic threshold, even when the targets are 0 and 1. Therefore, we evaluate the accuracies over a range of possible thresholds:
+<img src="https://github.com/RobRomijnders/RBFN_two_MNIST/blob/master/explore_threshold.png?raw=true" alt="Accuracies for RBFN on  two-class MNIST"></p>
+
+<p>Also interesting is to vary the regularization on the final perceptron or the variance of the radial basis function:</p>
+
+<p><img src="https://github.com/RobRomijnders/RBFN_two_MNIST/blob/master/explore_regularization.png" alt="Explore different regularizations for RBFN on two-class MNIST"></p>
+
+<p><img src="https://github.com/RobRomijnders/RBFN_two_MNIST/blob/master/explore_deviation.png" alt="Explore different variances of RBF for RBFN on two-class MNIST"></p>
+
+<h3>
+<a id="further-improvements" class="anchor" href="#further-improvements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Further improvements</h3>
+
+<p>This implementation of an RBFN is basic. Anyone who would like to take this further can consider</p>
+
+<ul>
+<li>Optimize the variance of the RBF. There are many articles and bookchapters on optimizing the variance of the RBF. Many implementations treat the variance as an input parameter and back-propagate into it.</li>
+<li>Back-propagate to the centerpoints. We took the location of the center points as random train samples. Another possibility is to treat the center point as an input parameter as well and back-propagate into it.</li>
+<li>Add an new hidden layer to the RBFN. Learning with back-propagation also allows you to add hidden layers to your liking. Now the radial basis neurons improve the generalization and the multiple perceptrons improve the versatility. Together they will provide a powerful model.</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/RobRomijnders">RobRomijnders</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
